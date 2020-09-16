@@ -26,7 +26,8 @@ SECRET_KEY = 'dqc*drq%!!7um#b$078=n1k-k1(%hg4sotgfmt^r&j=m+s+*2*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lostsales-dev.eu-west-2.elasticbeanstalk.com', 'localhost']
+ALLOWED_HOSTS = [
+    'lostsalesApp-dev.eu-west-2.elasticbeanstalk.com', 'localhost']
 
 
 # Application definition
