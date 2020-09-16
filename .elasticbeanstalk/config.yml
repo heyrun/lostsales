@@ -2,16 +2,9 @@ branch-defaults:
   master:
     environment: null
     group_suffix: null
-environment-defaults:
-  lostsales-dev:
-    branch: null
-    repository: null
-  lostsales-prod:
-    branch: master
-    repository: lostsales
 global:
-  application_name: lostsales
-  branch: null
+  application_name: lostsalesApp
+  branch: master
   default_ec2_keyname: aaron
   default_platform: Python 3.7 running on 64bit Amazon Linux 2
   default_region: eu-west-2
@@ -20,6 +13,6 @@ global:
   platform_name: null
   platform_version: null
   profile: eb-cli
-  repository: null
+  repository: origin
   sc: git
   workspace_type: Application
