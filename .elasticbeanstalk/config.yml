@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: lostsales-dev
+    environment: null
     group_suffix: null
 environment-defaults:
   lostsales-dev:
