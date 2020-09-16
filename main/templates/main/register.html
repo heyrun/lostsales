@@ -1,0 +1,89 @@
+{% extends 'main/index.html' %}{% block content %}
+<div class="container">
+
+  
+  <div class="row justify-content-center">
+  <div class="col-md-6">
+  <div class="card">
+  <header class="card-header">
+    <a href="{% url 'login' %}" class="float-right btn btn-outline-primary mt-1">Log in</a>
+    <h4 class="card-title mt-2">Sign up</h4>
+
+    {% if messages %} {% for message in messages %}
+    <row class="col-md-6">
+      <div class="alert alert-danger d-flex justify-content-center">{{message}}</div>
+    </row>
+    
+    {% endfor %} {% endif %}
+  </header>
+  <article class="card-body">
+  <form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col form-group">
+        <label>Username </label>   
+          <input type="text" class="form-control" placeholder="" name="username">
+      </div> <!-- form-group end.// -->
+    
+    </div> <!-- form-row end.// -->
+
+
+    <div class="form-row">
+      <div class="col form-group">
+        <label>First name </label>   
+          <input type="text" class="form-control" placeholder="" name="first_name" required>
+      </div> <!-- form-group end.// -->
+      <div class="col form-group">
+        <label>Last name</label>
+          <input type="text" class="form-control" placeholder=" " name="last_name" required>
+      </div> <!-- form-group end.// -->
+    </div> <!-- form-row end.// -->
+    
+ 
+    <div class="form-group col-md-6">
+      <label>Branch</label>
+      <select id="branch" class="form-control" name="branch" required>
+        <option> Choose...</option>
+        
+        {% for store in stores %}
+        <option value="{{store.id}}">{{store}}</option>
+        {% endfor %}
+          
+          
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="form-group">
+          <label>Create password</label>
+            <input class="form-control" type="password" name="password1" required>
+        </div>
+      </div> <!-- form-group end.// -->
+      <div class="form-group col-md-6">
+        <div class="form-group">
+          <label>Confirm password</label>
+            <input class="form-control" type="password" name="password2" required>
+        </div>
+      </div>
+      <!-- form-group end.// -->
+    </div> <!-- form-row.// -->
+
+    <!-- form-group end.// -->  
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+      </div> <!-- form-group// -->      
+      <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
+  </form>
+  </article> <!-- card-body end .// -->
+  <div class="border-top card-body text-center">Have an account? <a href="{% url 'login' %}">Log In</a></div>
+  </div> <!-- card.// -->
+  </div> <!-- col.//-->
+  
+  </div> <!-- row.//-->
+  
+  
+  </div> 
+  <!--container
+
+{% endblock content %}

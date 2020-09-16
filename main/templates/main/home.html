@@ -1,0 +1,51 @@
+{% extends 'main/index.html' %} {% block content %}
+{% load humanize %}
+
+<div class="container">
+
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <form action="" method="GET">
+        {{myfilter.form}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr />
+ <p> 
+   <a href="{% url 'capture_item' %}" class="btn btn-outline-primary btn-lg" > Capture a Lost Sale <span><i class="far fa-plus-square"></i></span></a> </p>
+  <div class="row">
+    <div class="col-md">
+      <table class="table">
+        <thead class="thead-dark">
+          
+            <th scope="col">UPC</th>
+            <th scope="col">Description</th>
+            <th scope="col">Attrib</th>
+
+            <th scope="col">Size</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Created on</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in lostsales %}
+
+          <tr>
+           
+            <td>{{i.product.upc}}</td>
+            <td>{{i.product.description}}</td>
+            <td>{{i.product.attributes}}</td>
+            <td>{{i.product.size}}</td>
+            <td>{{i.quantity}}</td>
+            <td>{{i.created_date|naturaltime}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

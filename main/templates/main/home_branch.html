@@ -1,0 +1,117 @@
+{% extends 'main/index.html' %} {% load static %}
+<!-- Contact-->
+
+{% block header %} {% endblock header %} {% block title %}
+<title>Capture a Loss Sale</title> {% endblock title %} {% block content %}
+<section class="page-section">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Submit a Lost Sale</h2>
+      <h3 class="section-subheading text-muted">
+        Search for the description of the item and click the Submit buttons
+      </h3>
+    </div>
+
+    <hr />
+    <div>
+      <form action="" method="GET">
+        {{myfilter.form}}
+        <button class="btn btn-primary">
+          Search for Product <i class="fas fa-search-plus"></i
+          ><span class="badge badge-primary"></span>
+        </button>
+      </form>
+      <hr />
+
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-success d-flex justify-content-center">
+        <strong>{{message}}</strong>
+      </div>
+      {% endfor %} {% endif %}
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>UPC</th>
+            <th>Description</th>
+            <th>Attribs</th>
+            <th>Size</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        {% with k=0 %} {% endwith %} {% for p in prod %}
+        <tr>
+          <th scope="row">{{n|add:1}}</th>
+          <td>{{p.upc}}</td>
+          <td>{{p.description}}</td>
+          <td>{{p.attributes}}</td>
+          <td>{{p.size}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success btn-md save"
+              id="test"
+              value="{{p.id}}"
+            >
+              Save <i class="far fa-save"></i>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div></div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modelId"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
+  <form action="capture" method="POST" id="submit_item">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">UPC Code: <span id="upc"></span></h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>Description: </strong><span id="description"></span></p>
+          <p><strong>Attributes: </strong><span id="attributes"></span></p>
+          <p><strong>Size: </strong><span id="size"></span></p>
+
+          <input type="hidden" name="product" value="" id="product" />
+          <label for="quantity">Quantity (Max: 5): </label
+          ><input type="number" name="quantity" id="quantity" min="1" max="5" />
+
+          {% csrf_token %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script></script>
+
+{% endblock content %}
