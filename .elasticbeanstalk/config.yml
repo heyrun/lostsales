@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: null
+    environment: lostsalesApp-dev
 global:
   application_name: lostsalesApp
   branch: null
