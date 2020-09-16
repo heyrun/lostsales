@@ -1,12 +1,17 @@
 branch-defaults:
   master:
-    environment: lostsalesApp-dev
+    environment: lostsalesapp
+    group_suffix: null
+environment-defaults:
+  lostsalesapp:
+    branch: master
+    repository: lostsalesapp
 global:
-  application_name: lostsalesApp
+  application_name: lostsalesapp
   branch: null
-  default_ec2_keyname: aaron
-  default_platform: Python 3.7 running on 64bit Amazon Linux 2
-  default_region: eu-west-2
+  default_ec2_keyname: ose-test
+  default_platform: Python 3.7
+  default_region: us-west-2
   include_git_submodules: true
   instance_profile: null
   platform_name: null
