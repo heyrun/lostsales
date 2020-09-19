@@ -27,7 +27,7 @@ SECRET_KEY = 'dqc*drq%!!7um#b$078=n1k-k1(%hg4sotgfmt^r&j=m+s+*2*'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://lostsalesapp-dev.eu-west-2.elasticbeanstalk.com/', 'localhost']
+    'lostsalesapp-dev.eu-west-2.elasticbeanstalk.com/', 'localhost']
 
 
 # Application definition
