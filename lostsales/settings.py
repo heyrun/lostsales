@@ -27,7 +27,7 @@ SECRET_KEY = 'dqc*drq%!!7um#b$078=n1k-k1(%hg4sotgfmt^r&j=m+s+*2*'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'lostsalesApp-dev.eu-west-2.elasticbeanstalk.com', 'localhost']
+    'lostsalesApp-dev.eu-west-2.elasticbeanstalk.com', 'awseb-AWSEB-WEWEBDVWA8FB-171619570.eu-west-2.elb.amazonaws.com', 'lostsales.healthplus.com.ng', 'localhost']
 
 
 # Application definition
