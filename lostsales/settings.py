@@ -148,13 +148,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
+#MEDIA_URL = '/images/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  commented out cos of AWS
 # DONE DUE TO MODIFICATIONS FOR AWS
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
-STATIC_ROOT = 'static_files'
+STATIC_ROOT = 'static'
 # STATIC_ROOT = 'static'  # used for AWS
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 LOGIN_URL = '/login'
