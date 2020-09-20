@@ -151,7 +151,7 @@ STATIC_URL = '/static/'
 #MEDIA_URL = '/images/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  commented out cos of AWS
 # DONE DUE TO MODIFICATIONS FOR AWS
-STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 #STATIC_ROOT = 'static'
 # STATIC_ROOT = 'static'  # used for AWS
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
