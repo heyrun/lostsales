@@ -10,6 +10,8 @@ django = "*"
 django-filter = "*"
 django-import-export = "*"
 psycopg2-binary = "*"
+django-storages = "*"
+boto3 = "*"
 
 [requires]
 python_version = "3.7"

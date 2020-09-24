@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_filters',
     'import_export',
+    'storages',  # Django storages to use S3
 
 ]
 
@@ -143,18 +144,29 @@ USE_L10N = True
 
 USE_TZ = True
 
+AWS_S3_HOST = 's3.eu-west-2.amazonaws.com'
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_ACCESS_KEY_ID = 'AKIARTDVD45PBDQQP3NL'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'lostsales'
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-#MEDIA_URL = '/images/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  commented out cos of AWS
-# DONE DUE TO MODIFICATIONS FOR AWS
-#STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_ROOT = 'static'
-# STATIC_ROOT = 'static'  # used for AWS
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_URL = '/images/'
+# commented out cos of AWS
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# # DONE DUE TO MODIFICATIONS FOR AWS
+# #STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = 'static'
+# # STATIC_ROOT = 'static'  # used for AWS
+# #MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 LOGIN_URL = '/login'
