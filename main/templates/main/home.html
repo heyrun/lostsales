@@ -11,7 +11,7 @@
         {% if messages %}
         
         {% for message in messages %}
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-{{message.tags}}" role="alert">
             {{message}}
         </div>
         {% endfor %}
@@ -58,6 +58,7 @@
             <th scope="col">Size</th>
             <th scope="col">Qty</th>
             <th scope="col">Price</th>
+            <th scope="col">Created_by</th>
             <th scope="col">Created on</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@
             <td>{{i.product.size}}</td>
             <td>{{i.quantity}}</td>
             <td>N{{i.product.price|intcomma}}</td>
+            <td>{{i.user.username}}</td>
             <td>{{i.created_date|naturaltime}}</td>
           </tr>
           {% endfor %}

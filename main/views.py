@@ -21,7 +21,7 @@ from django.db.models.query import EmptyQuerySet
 def allcaptures(request):
 
     lostsales = Lostsales.objects.filter(
-        user=request.user).order_by('-created_date')
+        store=request.user.staff.branch).order_by('-created_date')
     # if 'term' in request.GET:
     #     prod = Products.objects.filter(
     #         description__icontains=request.GET.get('term'))
@@ -41,14 +41,14 @@ def allcaptures(request):
         elif request.GET.get('submit') == 'export':
             if request.GET.get('start_date') == '' or request.GET.get('start_date') == '':
                 message = "Date fields cannot be empty for export. Please enter a date range to export"
-                messages.warning(request, message)
+                messages.error(request, message)
                 return redirect('home')
             response = HttpResponse(content_type='text/csv')
             writer = csv.writer(response)
             writer.writerow(['UPC', 'ALU', 'Description1',
-                             'Attributes', 'Size', 'Quantity', 'Date_created'])
+                             'Attributes', 'Size', 'Quantity', 'Price', 'Created_by', 'Date_created'])
             data = myFilter.qs.values_list(
-                'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'created_date')
+                'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'product__price', 'user__username', 'created_date')
 
             for item in data:
                 writer.writerow(item)
@@ -119,6 +119,10 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            message = "Username or password Incorrect. Please confirm and try again"
+            messages.warning(request, message)
+            return redirect('login')
 
     context = {}
 

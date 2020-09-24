@@ -1,9 +1,12 @@
 {% extends 'main/index.html' %}{% block content %}
 <div class="container">
   <div>
-    {% if messages %} {% for message in messages %}
-    <div class="alert alert-info">{{message}}</div>
-    {% endfor %} {% endif %}
+    <div class="col-xs-8">
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{message.tags}}" role="alert">{{message}}</div>
+      {% endfor %} {% endif %}
+    </div>
+
     <form class="col-md-4 mx-auto mt-5" method="POST" action="login">
       {% csrf_token %}
       <div class="form-group">
