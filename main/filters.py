@@ -1,5 +1,6 @@
 import django_filters
 from django_filters import DateFilter
+from django import forms
 
 from .models import *
 
@@ -17,7 +18,7 @@ class productFilter(django_filters.FilterSet):
 
 class lostSalesFilter(django_filters.FilterSet):
 
-    start_date = DateFilter(label='From date ("yyyy-mm-dd")', field_name='created_date', lookup_expr='gte'
+    start_date = DateFilter(field_name='created_date', lookup_expr='gte'
                             )
     end_date = DateFilter(
         label='End date', field_name='created_date', lookup_expr='lte')
