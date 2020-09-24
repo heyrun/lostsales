@@ -181,7 +181,7 @@ sup {
 }
 
 a {
-  color: #fed136;
+  color: #081bbb;
   text-decoration: none;
   background-color: transparent;
 }
@@ -10215,7 +10215,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #fed136 !important;
+  color: #081bbb !important;
 }
 
 a.text-primary:hover,

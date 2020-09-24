@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'dqc*drq%!!7um#b$078=n1k-k1(%hg4sotgfmt^r&j=m+s+*2*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'lostsalesApp-dev.eu-west-2.elasticbeanstalk.com', 'awseb-AWSEB-WEWEBDVWA8FB-171619570.eu-west-2.elb.amazonaws.com', 'lostsales.healthplus.com.ng', 'localhost']
