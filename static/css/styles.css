@@ -2651,6 +2651,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #00f;
   border-color: #00008b;
+  margin: 2px;
 }
 .btn-primary:hover {
   color: #fff;
@@ -3625,6 +3626,7 @@ input[type="button"].btn-block {
   width: 1%;
   min-width: 0;
   margin-bottom: 0;
+  margin-right: 2px;
 }
 .input-group > .form-control + .form-control,
 .input-group > .form-control + .custom-select,
@@ -10907,9 +10909,11 @@ section#contact form#contactForm .form-group {
 section#contact form#contactForm .form-group input,
 section#contact form#contactForm .form-group textarea {
   padding: 1.25rem;
+  margin: 50px;
 }
 section#contact form#contactForm .form-group input.form-control {
   height: auto;
+  margin-right: 5px;
 }
 section#contact form#contactForm .form-group-textarea {
   height: 100%;

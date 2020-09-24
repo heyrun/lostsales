@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import json
+import csv
 from django.http import HttpResponse, JsonResponse
 from .models import *
 from django.shortcuts import redirect
@@ -34,7 +35,20 @@ def allcaptures(request):
     # myFilter = productFilter(request.GET, queryset=allprod)
 
     if request.method == 'GET':
-        lostsales = myFilter.qs
+        if request.GET.get('submit') == 'filter':
+            lostsales = myFilter.qs
+
+        elif request.GET.get('submit') == 'export':
+            response = HttpResponse(content_type='text/csv')
+            writer = csv.writer(response)
+            writer.writerow(['UPC', 'ALU', 'Description1',
+                             'Attributes', 'Size', 'Quantity', 'Date_created'])
+            data = myFilter.qs.values_list(
+                'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'created_date')
+            for item in data:
+                writer.writerow(item)
+            response['content-disposition'] = 'attachment; filename="lostsales.csv'
+            return response
 
     context = {'lostsales': lostsales,
                'myfilter': myFilter,

@@ -6,10 +6,28 @@
   </div>
   <div class="row">
     <div class="col-sm">
-      <form action="" method="GET">
+      <h4>Filter Lost Sales</h4>
+        <form class="form-inline" action="" method="GET">
+          <div class="form-group">
+            <label for=" start_date">Start Date</label>
+            <input type="text" name="start_date" id="start_date" class="form-control" placeholder="format: yyyy-mm-dd" aria-describedby="helpId">
+            
+
+            <label for=" end_date">End Date</label> Date</label>
+            <input type="text" name="end_date" id="end_date" class="form-control" placeholder="format: yyyy-mm-dd" aria-describedby="helpId">
+            
+          </div>
+          <button type="submit" name='submit' class="btn btn-primary" value="filter">Filter <i class="fas fa-filter"></i></button>
+          <button type="submit" name='submit' class="btn btn-outline-primary" value="export">Export <i class="far fa-file-excel"></i></button>
+        </form>
+
+
+
+<!-- 
+      <form action="" method="GET" class="fomr-in">
         {{myfilter.form}}
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      
+      </form> -->
     </div>
   </div>
   <hr />
@@ -26,6 +44,7 @@
 
             <th scope="col">Size</th>
             <th scope="col">Qty</th>
+            <th scope="col">Price</th>
             <th scope="col">Created on</th>
           </tr>
         </thead>
@@ -39,6 +58,7 @@
             <td>{{i.product.attributes}}</td>
             <td>{{i.product.size}}</td>
             <td>{{i.quantity}}</td>
+            <td>N{{i.product.price|intcomma}}</td>
             <td>{{i.created_date|naturaltime}}</td>
           </tr>
           {% endfor %}
