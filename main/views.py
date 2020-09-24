@@ -67,6 +67,7 @@ def allcaptures(request):
 
 
                }
+    print(branch)
 
     return render(request, 'main/home.html', context)
 

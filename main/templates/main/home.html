@@ -46,8 +46,8 @@
   </div>
   <hr />
  <p> 
-  
-  {% if 'Branch' in request.user.groups %}
+
+  {% if branch == 'Branch' %}
   <a href="{% url 'capture_item' %}" class="btn btn-outline-primary btn-lg" > Capture a Lost Sale <span><i class="far fa-plus-square"></i></span></a> 
   {% endif %}
    </p>
