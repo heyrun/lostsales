@@ -68,7 +68,7 @@ def allcaptures(request):
 def item_select(request):
     b = Products.objects.all().order_by('description')
     prod = Products.objects.none()
-    lostsales = Lostsales.objects.filter(user=request.user.id)
+    #lostsales = Lostsales.objects.filter(user=request.user.id)
 
     # if 'term' in request.GET:
     #     prod = Products.objects.filter(
@@ -87,7 +87,7 @@ def item_select(request):
 
     context = {'prod': prod,
                'myfilter': myFilter,
-               lostsales: lostsales,
+               # lostsales: lostsales,
                }
 
     return render(request, 'main/home_branch.html', context)
@@ -214,7 +214,8 @@ def capture(request):  # Model that saves the lost sales
         product = Products.objects.get(id=item)
         lost = Lostsales()
         lost.product = product
-        lost.quantity = request.POST.get('quantity')
+        qty = request.POST.get('quantity')
+        lost.quantity = qty if qty else 1
         lost.store = request.user.staff.branch
         lost.user = User.objects.get(id=request.user.id)
 
