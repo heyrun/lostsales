@@ -13,14 +13,27 @@
     </div>
 
     <hr />
-    <div>
-      <form action="" method="GET">
-        {{myfilter.form}}
-        <button class="btn btn-primary">
-          Search for Product <i class="fas fa-search-plus"></i
-          ><span class="badge badge-primary"></span>
-        </button>
-      </form>
+    <div class="col-xs-12">
+      <div>
+        <form action="" method="GET" class="form-inline">
+          <div class="form-group">
+            <label for="description">Product Description Contains: </label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button class="btn btn-primary">
+            Search for Product <i class="fas fa-search-plus"></i
+            ><span class="badge badge-primary"></span>
+          </button>
+        </form>
+      </div>
+
       <hr />
 
       {% if messages %} {% for message in messages %}
