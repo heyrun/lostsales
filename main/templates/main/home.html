@@ -7,6 +7,19 @@
   <div class="row">
     <div class="col-sm">
       <h4>Filter Lost Sales</h4>
+        
+        {% if messages %}
+        
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+          
+          
+        {% endif %}
+          
+        
         <form class="form-inline" action="" method="GET">
           <div class="form-group">
             <label for=" start_date">Start Date</label>

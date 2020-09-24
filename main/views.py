@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages, humanize
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-
+from django.db.models.query import EmptyQuerySet
 # Create your views here.
 
 
@@ -39,12 +39,17 @@ def allcaptures(request):
             lostsales = myFilter.qs
 
         elif request.GET.get('submit') == 'export':
+            if request.GET.get('start_date') == '' or request.GET.get('start_date') == '':
+                message = "Date fields cannot be empty for export. Please enter a date range to export"
+                messages.warning(request, message)
+                return redirect('home')
             response = HttpResponse(content_type='text/csv')
             writer = csv.writer(response)
             writer.writerow(['UPC', 'ALU', 'Description1',
                              'Attributes', 'Size', 'Quantity', 'Date_created'])
             data = myFilter.qs.values_list(
                 'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'created_date')
+
             for item in data:
                 writer.writerow(item)
             response['content-disposition'] = 'attachment; filename="lostsales.csv'
