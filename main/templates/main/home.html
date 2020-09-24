@@ -46,7 +46,11 @@
   </div>
   <hr />
  <p> 
-   <a href="{% url 'capture_item' %}" class="btn btn-outline-primary btn-lg" > Capture a Lost Sale <span><i class="far fa-plus-square"></i></span></a> </p>
+  
+  {% if 'Branch' in request.user.groups %}
+  <a href="{% url 'capture_item' %}" class="btn btn-outline-primary btn-lg" > Capture a Lost Sale <span><i class="far fa-plus-square"></i></span></a> 
+  {% endif %}
+   </p>
   <div class="row">
     <div class="col-md">
       <table class="table">
@@ -60,6 +64,11 @@
             <th scope="col">Qty</th>
             <th scope="col">Price</th>
             <th scope="col">Created_by</th>
+            
+            {% if branch == 'BackOffice' %}
+            <th scope="col">Branch</th>
+            {% endif %}
+              
             <th scope="col">Created on</th>
           </tr>
         </thead>
@@ -75,6 +84,9 @@
             <td>{{i.quantity}}</td>
             <td>N{{i.product.price|intcomma}}</td>
             <td>{{i.user.username}}</td>
+            {% if branch == 'BackOffice' %}
+            <th>{{i.store.name}}</th>
+            {% endif %}
             <td>{{i.created_date|naturaltime}}</td>
           </tr>
           {% endfor %}

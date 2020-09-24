@@ -20,8 +20,14 @@ from django.db.models.query import EmptyQuerySet
 @login_required()
 def allcaptures(request):
 
-    lostsales = Lostsales.objects.filter(
-        store=request.user.staff.branch).order_by('-created_date')
+    branch = str(request.user.groups.all()[0])
+
+    if branch == 'BackOffice' or branch == 'RetailOps':
+
+        lostsales = Lostsales.objects.all().order_by('-created_date')
+    else:
+        lostsales = Lostsales.objects.filter(
+            store=request.user.staff.branch).order_by('-created_date')
     # if 'term' in request.GET:
     #     prod = Products.objects.filter(
     #         description__icontains=request.GET.get('term'))
@@ -46,9 +52,9 @@ def allcaptures(request):
             response = HttpResponse(content_type='text/csv')
             writer = csv.writer(response)
             writer.writerow(['UPC', 'ALU', 'Description1',
-                             'Attributes', 'Size', 'Quantity', 'Price', 'Created_by', 'Date_created'])
+                             'Attributes', 'Size', 'Quantity', 'Price', 'Created_by', 'Branch', 'Date_created'])
             data = myFilter.qs.values_list(
-                'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'product__price', 'user__username', 'created_date')
+                'product__upc', 'product__alu', 'product__description', 'product__attributes', 'product__size', 'quantity', 'product__price', 'user__username', 'store__name', 'created_date')
 
             for item in data:
                 writer.writerow(item)
@@ -57,6 +63,7 @@ def allcaptures(request):
 
     context = {'lostsales': lostsales,
                'myfilter': myFilter,
+               'branch': branch
 
 
                }
@@ -156,15 +163,21 @@ def registerUser(request):
             user.save()
 
             staff.user = user
-            staff.branch = Stores(request.POST.get('branch'))
-            if staff.branch == 'Back Office':
+            staff.branch = Stores.objects.get(id=(request.POST.get('branch')))
+
+            staff.save()
+            print(user.staff.branch, ' -branch')
+
+            if str(staff.branch) == 'Back Office':
                 group = Group.objects.get(name='BackOffice')
-            elif staff.branch == 'Retail Ops':
+
+            elif str(staff.branch) == 'Retail Ops':
                 group = Group.objects.get(name='RetailOps')
             else:
                 group = Group.objects.get(name='Branch')
+
             user.groups.set([group])
-            staff.save()
+            # staff.save()
             message = 'User {} Created Successfully. Please log in'.format(
                 user)
 

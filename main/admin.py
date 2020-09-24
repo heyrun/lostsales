@@ -18,7 +18,7 @@ class ProductResources(ImportExportModelAdmin):
 
 @admin.register(Stores)
 class ProductResources(ImportExportModelAdmin):
-    pass
+    readonly_fields = ('id',)
 
 
 @admin.register(Products)
