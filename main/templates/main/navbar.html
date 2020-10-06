@@ -16,8 +16,20 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'capture_item' %}"> Capture Loss Sale</a>
       </li>
-    </ul>
-    
+      
+      {% if branch == "BackOffice" %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_product' %}">Add Products</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'update_product' %}">Edit Products</a>
+      </li>
+      
+        
+      {% endif %}
+  
   </div>
   <div class="dropdown">
 
@@ -29,7 +41,8 @@
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         {% endif %}
-          
+
+       
        
       </div>
   </div>

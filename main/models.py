@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 
 class Products(models.Model):
-    SUB_CHOICES = [(100, 'HealthPlus'),
-                   (200, 'CasaBella')]
+    SUB_CHOICES = [('100', 'HealthPlus'),
+                   ('200', 'CasaBella')]
 
     upc = models.CharField(max_length=200)
     alu = models.CharField(max_length=200, null=True, blank=True)

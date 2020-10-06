@@ -1,0 +1,166 @@
+{% extends 'main/index.html' %} {% load static %} {% load humanize %}
+<!-- Contact-->
+
+{% block header %} {% endblock header %} {% block title %}
+<title>Add Product</title> {% endblock title %} {% block content %}
+<section class="page-section">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Create a New Product</h2>
+    </div>
+
+    <hr />
+    <div
+      class="col-md-12"
+      style="width: 50%; margin: auto;padding: auto; border: 2em; border-color: black; background-image: url("https://pixabay.com/photos/tablets-medicine-supplement-5620566/");"
+    >
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-success d-flex justify-content-center">
+        <strong>{{message}}</strong>
+      </div>
+      {% endfor %} {% endif %}
+
+      <form action="" method="POST" class="">
+        {% csrf_token %}
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label">
+            UPC</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="upc"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >ALU</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="alu"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="exampleFormControlSelect1" class="col-sm-3 col-form-label"
+            >Subsidiary</label
+          >
+
+          <div class="col-sm-9">
+            <select
+              class="form-control"
+              id="exampleFormControlSelect1"
+              name="subsidiary"
+              required
+            >
+              <option value="100">HealthPlus</option>
+              <option value="200">CasaBella</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >Description</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="description"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >Attribute</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              required
+              name="attribute"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >Size</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="size"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >cost</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="cost"
+              required
+              min="0"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="exampleFormControlInput1" class="col-sm-3 col-form-label"
+            >Price</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              name="price"
+              min="0"
+              required
+            />
+          </div>
+        </div>
+     
+          <div class="col-sm-9">
+            <button type="submit" class="btn btn-outline-primary btn-lg">Create Product</button>
+          </div>
+
+
+       
+       
+      </form>
+    </div>
+    <div></div>
+  </div>
+</section>
+{% endblock content %}

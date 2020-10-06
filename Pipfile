@@ -12,6 +12,7 @@ django-import-export = "*"
 psycopg2-binary = "*"
 django-storages = "*"
 boto3 = "*"
+django-mathfilters = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,5 +1,6 @@
 {% extends 'main/index.html' %} {% block content %}
 {% load humanize %}
+{% load mathfilters  %}
 
 <div class="container">
 
@@ -51,7 +52,134 @@
   <a href="{% url 'capture_item' %}" class="btn btn-outline-primary btn-lg" > Capture a Lost Sale <span><i class="far fa-plus-square"></i></span></a> 
   {% endif %}
    </p>
+
+   <!--Grid row-->
+<div class="row">
+
+  <!--Grid column-->
+  <div class="col-md-4 mb-4">
+
+    <!-- Card -->
+    <div class="card gradient-card">
+
+        <div class="card-image" >
+
+          <!-- Content -->
+          <a href="#!">
+            <div class="text-white d-flex h-100 mask blue-gradient-rgba">
+              <div class="first-content align-self-center p-3">
+                <h3 class="card-title">Total Item Captured</h3>
+                
+              </div>
+              <div class="second-content align-self-center mx-auto text-center">
+                <i class="fas fa-chart-pie fa-3x"></i>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Data -->
+        <div class="third-content ml-auto mr-4 mb-2">
+         
+          <h4 class="font-weight-bold float-right">{{totalcapture}}</h4>
+        </div>
+
+        <!-- Content -->
+        
+
+    </div>
+    <!-- Card -->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-4 mb-4">
+
+    <!-- Card -->
+    <div class="card gradient-card">
+
+        <div class="card-image" >
+
+          <!-- Content -->
+          <a href="#!">
+            <div class="text-white d-flex h-100 mask purple-gradient-rgba">
+              <div class="first-content align-self-center p-3">
+                <h3 class="card-title">Total Quantity</h3>
+               
+              </div>
+              <div class="second-content  align-self-center mx-auto text-center">
+                <i class="fas fa-chart-line fa-3x"></i>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Data -->
+        <div class="third-content  ml-auto mr-4 mb-2">
+          
+          <h4 class="font-weight-bold float-right">{{quantity}}</h4>
+        </div>
+
+        <!-- Content -->
+        
+
+    </div>
+    <!-- Card -->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-4 mb-4">
+
+    <!-- Card -->
+    <div class="card gradient-card">
+
+        <div class="card-image" >
+
+          <!-- Content -->
+          <a href="#!">
+            <div class="text-white d-flex h-100 mask peach-gradient-rgba">
+              <div class="first-content align-self-center p-3">
+                <h3 class="card-title">Total Price</h3>
+              
+              </div>
+              <div class="second-content  align-self-center mx-auto text-center">
+                
+                <i class="far fa-money-bill-alt fa-3x"></i>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Data -->
+        <div class="third-content  ml-auto mr-4 mb-2">
+        
+          <h4 class="font-weight-bold float-right">N{{extprice|intcomma}}</h4>
+        </div>
+
+        <!-- Content -->
+       
+    </div>
+    <!-- Card -->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  
+  <!--Grid column-->
+
+</div>
+<!--Grid row-->
+ 
   <div class="row">
+
+ 
     <div class="col-md">
       <table class="table">
         <thead class="thead-dark">
@@ -63,6 +191,7 @@
             <th scope="col">Size</th>
             <th scope="col">Qty</th>
             <th scope="col">Price</th>
+            <th scope="col">Ext Price</th>
             <th scope="col">Created_by</th>
             
             {% if branch == 'BackOffice' %}
@@ -83,6 +212,7 @@
             <td>{{i.product.size}}</td>
             <td>{{i.quantity}}</td>
             <td>N{{i.product.price|intcomma}}</td>
+            <td>N{{i.product.price|mul:i.quantity|intcomma}}</td>
             <td>{{i.user.username}}</td>
             {% if branch == 'BackOffice' %}
             <th>{{i.store.name}}</th>

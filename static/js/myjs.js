@@ -48,11 +48,51 @@ $(function () {
     });
   }
 
+  function get_product(item) {
+    const csrftoken = getCookie("csrftoken");
+
+    $.ajax({
+      headers: { "X-CSRFToken": csrftoken },
+      url: "edititem",
+      type: "POST",
+      data: { id: item },
+      success: function (data) {
+        console.log(data["price"]);
+        $("#productmodelId").modal({
+          fadeDuration: 500,
+          fadeDelay: 0.5,
+        });
+        document.getElementById("upc").innerHTML = data["upc"];
+        document.getElementById("description").innerHTML = data["description"];
+        document.getElementById("attributes").innerHTML = data["attributes"];
+        document.getElementById("size").innerHTML = data["size"];
+        document.getElementById("price").value = data["price"];
+        document.getElementById("product").value = data["id"];
+        return false;
+      },
+      error: function () {
+        $("#results").html(
+          "<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: " +
+            " <a href='#' class='close'>&times;</a></div>"
+        ); // add the error to the dom
+        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+      },
+    });
+  }
+
   $(".save").click(function (e) {
     e.preventDefault();
     var item = $(this).prop("value");
 
     get_item(item);
+  });
+
+  $(".edit").click(function (e) {
+    e.preventDefault();
+    var item = $(this).prop("value");
+    console.log(item);
+
+    get_product(item);
   });
 
   $(".upc").autocomplete({

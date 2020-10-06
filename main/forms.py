@@ -19,3 +19,10 @@ class UserCreationForm(ModelForm):
         model = User
         fields = ('username', 'first_name',
                   'last_name', 'password')
+
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Products
+        fields = ('upc', 'alu', 'subsidiary', 'description',
+                  'attributes', 'size', 'cost', 'price')
