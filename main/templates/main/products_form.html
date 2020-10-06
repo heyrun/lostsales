@@ -12,7 +12,14 @@
     <hr />
     <div
       class="col-md-12"
-      style="width: 50%; margin: auto;padding: auto; border: 2em; border-color: black; background-image: url("https://pixabay.com/photos/tablets-medicine-supplement-5620566/");"
+      style="
+        width: 50%;
+        margin: auto;
+        padding: auto;
+        border: 2em;
+        border-color: black;
+        background-image: url('https://pixabay.com/photos/tablets-medicine-supplement-5620566/');
+      "
     >
       {% if messages %} {% for message in messages %}
       <div class="alert alert-success d-flex justify-content-center">
@@ -150,14 +157,12 @@
             />
           </div>
         </div>
-     
-          <div class="col-sm-9">
-            <button type="submit" class="btn btn-outline-primary btn-lg">Create Product</button>
-          </div>
 
-
-       
-       
+        <div class="col-sm-9">
+          <button type="submit" class="btn btn-outline-primary btn-lg">
+            Create Product
+          </button>
+        </div>
       </form>
     </div>
     <div></div>

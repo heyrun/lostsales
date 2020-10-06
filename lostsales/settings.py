@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'dqc*drq%!!7um#b$078=n1k-k1(%hg4sotgfmt^r&j=m+s+*2*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'lostsalesApp-dev.eu-west-2.elasticbeanstalk.com', 'awseb-AWSEB-WEWEBDVWA8FB-171619570.eu-west-2.elb.amazonaws.com', 'lostsales.healthplus.com.ng', 'localhost']
@@ -154,7 +154,7 @@ AWS_STORAGE_BUCKET_NAME = 'lostsales'
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # # Static files (CSS, JavaScript, Images)
