@@ -25,9 +25,7 @@ from django.views.generic import CreateView
 @login_required()
 def allcaptures(request):
 
-    branch = str(request.user.groups.all()[0])
-
-    if branch == 'BackOffice' or branch == 'RetailOps':
+    if request.session['branch'] == 'BackOffice' or request.session['branch'] == 'RetailOps':
 
         lostsales = Lostsales.objects.all().order_by('-created_date')
     else:
@@ -105,7 +103,7 @@ def allcaptures(request):
 
     context = {'lostsales': lostsales,
 
-               'branch': branch,
+
                'totalcapture': totalScan,
                'quantity': qty,
                'extprice': extprice,
@@ -171,6 +169,8 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            branch = str(request.user.groups.all()[0])
+            request.session['branch'] = branch
             return redirect('home')
         else:
             message = "Username or password Incorrect. Please confirm and try again"

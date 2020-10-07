@@ -17,7 +17,7 @@
         <a class="nav-link" href="{% url 'capture_item' %}"> Capture Loss Sale</a>
       </li>
       
-      {% if branch == "BackOffice" %}
+      {% if request.session.branch == "BackOffice" %}
 
       <li class="nav-item">
         <a class="nav-link" href="{% url 'add_product' %}">Add Products</a>
