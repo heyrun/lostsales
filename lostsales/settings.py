@@ -107,7 +107,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'lostsales',
             'USER': 'user',
-            'PASSWORD': 'P@ssw0rd',
+            'PASSWORD': '#####',
             'HOST': '127.0.0.1',
             'PORT': '5432',
         }
@@ -148,8 +148,8 @@ USE_TZ = True
 
 AWS_S3_HOST = 's3.eu-west-2.amazonaws.com'
 AWS_S3_REGION_NAME = 'eu-west-2'
-AWS_ACCESS_KEY_ID = 'AKIARTDVD45PBDQQP3NL'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = '#######'
+AWS_SECRET_ACCESS_KEY = '#########'
 AWS_STORAGE_BUCKET_NAME = 'lostsales'
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
